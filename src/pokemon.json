@@ -3,74 +3,74 @@
       "id": 1,
       "name": "Pikachu",
       "image": "https://secure.img1-fg.wfcdn.com/im/62945217/resize-h700-p1-w700%5Ecompr-r85/8470/84707680/Pokemon+Pikachu+Wall+Decal.jpg",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 2,
       "name": "Charmander",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 3,
       "name": "Squirtle",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 4,
       "name": "Bulbasaur",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 5,
       "name": "Eevee",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 6,
       "name": "Jigglypuff",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 7,
       "name": "Rattata",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 8,
       "name": "Butterfree",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 9,
       "name": "Clefairy",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 10,
       "name": "Magikarp",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/129.png",
-      "clickStatus": 0
+      "clickStatus": false
     },
     {
       "id": 11,
       "name": "Geodude",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/074.png",
-      "clickStatus": 0
+      "clickStatus": false
       
     },
     {
       "id": 12,
-      "name": "Staryu",
-      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/045.png",
-      "clickStatus": 0
+      "name": "Mew",
+      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/151.png",
+      "clickStatus": false
     }
   ]
   

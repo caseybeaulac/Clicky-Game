@@ -1,109 +1,79 @@
 import React from "react";
+import pokemon from "../../pokemon.json"
 import "./Style.css";
 
 class Pokemon extends React.Component {
 
   state = {
     score: 0,
-    pokemon: [
-      {
-        "id": 1,
-        "name": "Pikachu",
-        "image": "https://secure.img1-fg.wfcdn.com/im/62945217/resize-h700-p1-w700%5Ecompr-r85/8470/84707680/Pokemon+Pikachu+Wall+Decal.jpg",
-        "clickStatus": 0
-      },
-      {
-        "id": 2,
-        "name": "Charmander",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 3,
-        "name": "Squirtle",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 4,
-        "name": "Bulbasaur",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 5,
-        "name": "Eevee",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 6,
-        "name": "Jigglypuff",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 7,
-        "name": "Rattata",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 8,
-        "name": "Butterfree",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 9,
-        "name": "Clefairy",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 10,
-        "name": "Magikarp",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/129.png",
-        "clickStatus": 0
-      },
-      {
-        "id": 11,
-        "name": "Geodude",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/074.png",
-        "clickStatus": 0
-
-      },
-      {
-        "id": 12,
-        "name": "Staryu",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/045.png",
-        "clickStatus": 0
-      }
-
-    ]
+    record: 0,
+    pokemon: pokemon
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleScore = () => {
-    console.log("Click");
-    this.setState({ score: this.state.score + 1 });
-   // this.setState({ pokemon: this.state.pokemon.clickStatus + 1 });
-    console.log(this.state.score)
-    console.log(this.state.pokemon.id)
-
+  componentDidMount(){
+    this.setState({pokemon : this.shuffle(this.state.pokemon)});
   }
+
+  shuffle = pokemon => {
+    let newPokemon = pokemon.sort(function(a, b){return 0.5 - Math.random()});
+    return newPokemon;
+  }
+
+  reset = pokemon => {
+    const resetPokemon = pokemon.map(data => ({...data, clickStatus: false}));
+    return this.shuffle(resetPokemon)
+  }
+  
+  goodGuess = newPokemon => {
+    let currentScore = this.state.score;
+    currentScore++;
+    let newRecord = Math.max(currentScore, this.state.record);
+
+    this.setState({
+      pokemon : this.shuffle(newPokemon),
+      score : currentScore,
+      record: newRecord,
+    })
+  }
+
+  badGuess = newPokemon => {
+    this.setState({
+      pokemon: this.reset(newPokemon),
+      score: 0
+    })
+  }
+  
+  handleScore = (id) => {
+
+    let correctGuess = false;
+
+    const newPokemon = this.state.pokemon.map(data => {
+      if(data.id===id){
+        if (!data.clickStatus){
+          data.clickStatus = true;
+          correctGuess = true;
+        }
+      }
+      return data;
+    });
+    correctGuess ? this.goodGuess(newPokemon) : this.badGuess(newPokemon);
+   
+    // console.log("Click");
+    // this.setState({ score: this.state.score + 1 });
+   
+  }
+
+  // removePokemon = id => {
+  //   const pokemonArr = this.state.pokemon.filter(data => data.id !== id);
+  //   this.setState({ pokemonArr });
+  // }
+
   render() {
     return (
       <div>
-        {this.state.pokemon.map(pokemon =>
-          <div className="img-container" onClick={this.handleScore}>
-            <img alt={pokemon.name} src={pokemon.image} />
+        {this.state.pokemon.map(data =>
+          <div className="img-container" id={data.id} onClick={() => this.handleScore(data.id)}>
+            <img alt={data.name} src={data.image} />
           </div>
         )}
       </div>
