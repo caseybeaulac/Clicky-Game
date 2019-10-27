@@ -11,7 +11,6 @@ class App extends React.Component {
     return (
       <Wrapper>
         <h1 className="title">Click These Pokemon</h1>
-        
         <Pokemon />
       </Wrapper>
     );

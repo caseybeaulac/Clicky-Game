@@ -70,12 +70,14 @@ class Pokemon extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="">Score: {this.state.score} Top Score: {this.state.record}
+      <div className="row">
         {this.state.pokemon.map(data =>
-          <div className="img-container" id={data.id} onClick={() => this.handleScore(data.id)}>
+          <div className="col-lg-3 img-container" id={data.id} onClick={() => this.handleScore(data.id)}>
             <img alt={data.name} src={data.image} />
           </div>
         )}
+      </div>
       </div>
     );
   }
